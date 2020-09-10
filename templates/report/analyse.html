@@ -8,50 +8,60 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-    <!-- <script src="{% static 'js/download.js' %}" charset="utf-8"></script> -->
 
 
   </head>
-  <body>
-    <br><br>
-      <center>
-        <h2>Report generated for {{sheet}} class from {{start}} to {{end}}</h2><br><br>
-        <h2>Day wise Report</h2><br>
-        <table>
-          {{teacher | safe}}
-        </table>
-<br>
-<div class="container">
-  {% autoescape off %}
-  {{graph1}}
-  {% endautoescape %}
-</div><br><br>
-<div class="container">
-  {% autoescape off %}
-  {{graph2}}
-  {% endautoescape %}
-</div>
-
+    <body>
       <br><br>
-        <h2>Student Wise Report</h2><br>
-        <table>{{ student | safe}}</table><br>
+        <center>
+          <img src="{% static 'images/logomain.png' %}" alt=""><br><br>
+          <h2>Report generated for {{sheet}} class</h2><br><br>
+          <p> {{start}} to {{end}}</p>
+          <h2>Day wise Report</h2><br>
+          <table>
+            {{teacher | safe}}
+          </table>  <br>
+          <img src="logomain.png" alt="">
+          
+  <!-- <div class="container">
+    {% autoescape off %}
+    {{graph1}}
+    {% endautoescape %}
+  </div><br><br>
+  <div class="container">
+    {% autoescape off %}
+    {{graph2}}
+    {% endautoescape %} -->
+  <!-- </div> -->
+  <div class="container">
+    <!-- <img src="" alt=""> -->
 
-        <h2>students having less than 25% attendance {{less_25}}</h2><br>
-        <table>{{less_than_25 | safe}}</table><br>
+      <img src="/naman.png" alt="">
+      <p>Heloooooooooooiuytrdcvbnmnb</p>
+    <!-- <img src="{% static 'images/plot.png' %}" alt=""> -->
+    <!-- "{% static "images/logomain.png"%}" -->
+  </div>
 
-        <h2>students having less than 50% attendance  {{less_50}}</h2><br>
-        <table>{{less_than_50  | safe}}</table><br>
+        <br><br>
+          <h2>Student Wise Report</h2><br>
+          <table>{{ student | safe}}</table><br>
 
-        <h2>students having less than 75% attendance  {{less_75}}</h2><br>
-        <table>{{less_than_75 | safe}}</table><br>
+          <h2>students having less than attendance {{num}}% {{less_25}}</h2><br>
+          <table>{{less_than_25 | safe}}</table><br>
 
-        <h2>students having greater than 75% attendance {{greater_75}}</h2><br>
-        <table>{{greater_than_75 |safe}}</table><br>
+          <!-- <h2>students having less than 50% attendance  {{less_50}}</h2><br>
+          <table>{{less_than_50  | safe}}</table><br>
 
-        <br>
-      <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="analyse.html">Download</a>
-        <!-- <a href="/"  download><button type="button" class="btn btn-primary" name="button">Download</button></a><br><br> -->
-      </center>
+          <h2>students having less than 75% attendance  {{less_75}}</h2><br>
+          <table>{{less_than_75 | safe}}</table><br>
 
-  </body>
+          <h2>students having greater than 75% attendance {{greater_75}}</h2><br>
+          <table>{{greater_than_75 |safe}}</table><br> -->
+
+          <br>
+        <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="analyse.html">Download</a>
+          <!-- <a href="/"  download><button type="button" class="btn btn-primary" name="button">Download</button></a><br><br> -->
+        </center>
+
+    </body>
 </html>
