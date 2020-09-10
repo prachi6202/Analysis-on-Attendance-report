@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Report</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <!-- <script src="{% static 'js/download.js' %}" charset="utf-8"></script> -->
+
+
+  </head>
+  <body>
+    <br><br>
+      <center>
+        <h2>Report generated for {{sheet}} class from {{start}} to {{end}}</h2><br><br>
+        <h2>Day wise Report</h2><br>
+        <table>
+          {{teacher | safe}}
+        </table>
+<br>
+<div class="container">
+  {% autoescape off %}
+  {{graph1}}
+  {% endautoescape %}
+</div><br><br>
+<div class="container">
+  {% autoescape off %}
+  {{graph2}}
+  {% endautoescape %}
+</div>
+
+      <br><br>
+        <h2>Student Wise Report</h2><br>
+        <table>{{ student | safe}}</table><br>
+
+        <h2>students having less than 25% attendance {{less_25}}</h2><br>
+        <table>{{less_than_25 | safe}}</table><br>
+
+        <h2>students having less than 50% attendance  {{less_50}}</h2><br>
+        <table>{{less_than_50  | safe}}</table><br>
+
+        <h2>students having less than 75% attendance  {{less_75}}</h2><br>
+        <table>{{less_than_75 | safe}}</table><br>
+
+        <h2>students having greater than 75% attendance {{greater_75}}</h2><br>
+        <table>{{greater_than_75 |safe}}</table><br>
+
+        <br>
+      <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="analyse.html">Download</a>
+        <!-- <a href="/"  download><button type="button" class="btn btn-primary" name="button">Download</button></a><br><br> -->
+      </center>
+
+  </body>
+</html>

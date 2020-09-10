@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Report</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <br><br>
+    <center><h1>Hello {{name}}</h1></center>
+    <div class="column"><center>
+        <div class="card text-center change" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Generate your attendance report</h5>
+            <p></p>
+            <span  class="card-text">
+              <form  class="" action="analyse/" enctype="multipart/form-data" method="post">
+               {% csrf_token %}
+              <p> Upload an File</p>
+              <input  type="file" name="filePath" value=""><br><br>
+              <input type="text" name="sheet" placeholder="sheet name" value=""><br><br>
+              <label for="start">Start</label>
+              <input type="date" id="start" name="trip-start" value="2020-08-04" min="2020-07-01" max="2021-07-30">
+<br>
+              <label for="end">End</label>
+              <input type="date" id="end" name="trip-end" value="2020-08-04" min="2020-07-01" max="2021-07-30">
+
+              <button  class="btn btn-primary" type="submit" name="button">Upload</button>
+            </form>
+          </span>
+        </div>
+      </div></center>
+  </div>
+
+  </body>
+</html>
