@@ -4,64 +4,102 @@
   <head>
     <meta charset="utf-8">
     <title>Report</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <style>
+      .column {
+        float: left;
+        width: 50%;
+        padding: 5px;
+      }
+
+      .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+    </style>
 
   </head>
     <body>
-      <br><br>
-        <center>
-          <img src="{% static 'images/logomain.png' %}" alt=""><br><br>
-          <h2>Report generated for {{sheet}} class</h2><br><br>
-          <p> {{start}} to {{end}}</p>
-          <h2>Day wise Report</h2><br>
-          <table>
-            {{teacher | safe}}
-          </table>  <br>
-          <img src="logomain.png" alt="">
-          
-  <!-- <div class="container">
-    {% autoescape off %}
-    {{graph1}}
-    {% endautoescape %}
-  </div><br><br>
-  <div class="container">
-    {% autoescape off %}
-    {{graph2}}
-    {% endautoescape %} -->
-  <!-- </div> -->
-  <div class="container">
-    <!-- <img src="" alt=""> -->
+      <br>
 
-      <img src="/naman.png" alt="">
-      <p>Heloooooooooooiuytrdcvbnmnb</p>
-    <!-- <img src="{% static 'images/plot.png' %}" alt=""> -->
-    <!-- "{% static "images/logomain.png"%}" -->
+<div class="container">
+    <div class="card text-center">
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+
+
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{sheet}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Report</a>
+              <a class="dropdown-item" href="#">Visualise</a>
+              <a class="dropdown-item" href="#">Student Report</a>
+              <a class="dropdown-item" href="#">Filtered List</a>
+            </div>
+          </li> -->
+
+
+
+
+          <li class="nav-item">
+            <a class="nav-link active" href="#daywisedata">{{sheet}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#visualize">Visualize</a>
+          </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="#student">Student Report</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#list">Filtered List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{start}} to {{end}}</a>
+          </li>
+          <li class="nav-item right">
+            <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="analyse.html">Download</a>
+          </li>
+        </ul>
+      </div>
+
+
+      <div class="card-body">
+        <h2 class="card-title" id="daywisedata">Attendance Report</h2><br>
+        <center><table >{{values | safe}}</table></center><br>
+        <div class="container">
+
+            <h2 id="visualize">Visualisation</h2>
+          <div class="row">
+            <div class="column">
+                <img src="/media/naman.png" style="width:100%" alt="">
+            </div>
+            <div class="column">
+                <img src="/media/abhi.png" style="width:100%"  alt="">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container">
+          <h2 id="student">Student Report</h2>
+          <center><table class="table">{{ student | safe}}</table></center><br>
+        </div>
+        <br>
+
+        <div class="container">
+          <h2 id="list">{{less_25}} Students are having attendance less than {{num}}%</h2><br>
+          <center><table class="table">{{less_than_25 | safe}}</table></center><br>
+        </div>
+      </div>
+   </div>
+
   </div>
-
-        <br><br>
-          <h2>Student Wise Report</h2><br>
-          <table>{{ student | safe}}</table><br>
-
-          <h2>students having less than attendance {{num}}% {{less_25}}</h2><br>
-          <table>{{less_than_25 | safe}}</table><br>
-
-          <!-- <h2>students having less than 50% attendance  {{less_50}}</h2><br>
-          <table>{{less_than_50  | safe}}</table><br>
-
-          <h2>students having less than 75% attendance  {{less_75}}</h2><br>
-          <table>{{less_than_75 | safe}}</table><br>
-
-          <h2>students having greater than 75% attendance {{greater_75}}</h2><br>
-          <table>{{greater_than_75 |safe}}</table><br> -->
-
-          <br>
-        <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="analyse.html">Download</a>
-          <!-- <a href="/"  download><button type="button" class="btn btn-primary" name="button">Download</button></a><br><br> -->
-        </center>
 
     </body>
 </html>
