@@ -9,10 +9,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      .column {
-        float: left;
-        width: 50%;
-        padding: 5px;
+        @media only screen and (max-width: 600px) {
+            .ex {
+                    padding-left: 70px;
+                    padding-bottom: 100px;
+                  }
+            .fp{
+                  display: None;
+                }
+            }
+
+      .fp{
+        height:500px;
+      }
+
+      .card{
+        border-radius:30px;
       }
 
       .row::after {
@@ -28,12 +40,8 @@
 
     <div class="container">
       <div class="row">
-        <div class="column">
-            <img src="{% static 'images/pic.png' %}" style="width:100%" alt="">
-        </div>
-        <div class="column">
-          <div class="column"><center>
-              <div class="card text-center change" style="width: 20rem;">
+        <div class="col-lg-4 col-sm-12 ex">
+              <div class="card text-center change shadow" style="width:330px;">
                 <div class="card-body">
                   <h4 class="card-title">Generate Attendance Report</h4>
                   <p></p>
@@ -48,22 +56,23 @@
                     <input type="date" id="start" name="trip-start" value="" min="2000-01-01" max="2060-07-30"><br>
 
                     <label for="end">End</label>
-                    <input type="date" id="end" name="trip-end" value="" min="2000-01-01" max="2060-07-30"><br>
+                    <input type="date" id="end" name="trip-end" value="" min="2000-01-01" max="2060-07-30"><br><br>
 
-                    <label for="number">Attendance Less than</label>
+                    <!-- <h6></h6> -->
+                    <label for="number">Filter Students (Attendance less than)</label>
                     <input type="number" name="number" value="50"><br><br>
 
 
-                    <button  class="btn btn-primary" type="submit" name="button">Upload</button>
+                    <button  class="btn btn-danger" type="submit" name="button">Upload</button>
                   </form>
                 </span>
               </div>
-            </div></center>
+            </div>
         </div>
-
+        <div class="col-lg-6 col-sm-12">
+              <img class="fp" src="/media/pic2.jpg" alt="Unable to show!">
         </div>
       </div>
     </div>
-
   </body>
 </html>

@@ -5,9 +5,16 @@
     <meta charset="utf-8">
     <title>Report</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+    @media only screen and (max-width: 600px) {
+
+
+        }
+
       .column {
         float: left;
         width: 50%;
@@ -44,17 +51,15 @@
           </li> -->
 
 
-
-
           <li class="nav-item">
-            <a class="nav-link active" href="#daywisedata">{{sheet}}</a>
+            <a class="nav-link " href="#daywisedata">{{sheet}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="#visualize">Visualize</a>
           </li>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#student">Student Report</a>
+          <a class="nav-link " href="#student">Student`s Report</a>
         </li>
           <li class="nav-item">
             <a class="nav-link " href="#list">Filtered List</a>
@@ -62,8 +67,13 @@
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{start}} to {{end}}</a>
           </li>
-          <li class="nav-item right">
-            <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="analyse.html">Download</a>
+
+          <li class="nav-item  ml-auto">
+            <a class="nav-link " href="#">About</a>   <!-- Add the about.html link -->
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link active"  onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="analyse.html">Download</a>
           </li>
         </ul>
       </div>
@@ -71,34 +81,35 @@
 
       <div class="card-body">
         <h2 class="card-title" id="daywisedata">Attendance Report</h2><br>
-        <center><table >{{values | safe}}</table></center><br>
-        <div class="container">
+        <center><table class="table">{{values | safe}}</table></center><br>
+<br>
 
+        <div class="container">
             <h2 id="visualize">Visualisation</h2>
           <div class="row">
-            <div class="column">
-                <img src="/media/naman.png" style="width:100%" alt="">
+            <div class="col-lg-6 col-sm-12">
+                <img src="/media/naman.png" style="width:100%" alt="Cannot Load Image">
             </div>
-            <div class="column">
-                <img src="/media/abhi.png" style="width:100%"  alt="">
+            <div class="col-lg-6 col-sm-12">
+                <img src="/media/abhi.png" style="width:100%"  alt="Cannot Load Image">
             </div>
           </div>
         </div>
 
-
+<br>
         <div class="container">
-          <h2 id="student">Student Report</h2>
+          <h2 id="student">Student`s Report</h2>
           <center><table class="table">{{ student | safe}}</table></center><br>
         </div>
-        <br>
+<br>
 
         <div class="container">
-          <h2 id="list">{{less_25}} Students are having attendance less than {{num}}%</h2><br>
+          <h2 id="list">Attendance less than {{num}}% </h2><br>
+          <h6>( {{less_25}} Students )</h6>
           <center><table class="table">{{less_than_25 | safe}}</table></center><br>
         </div>
       </div>
    </div>
-
   </div>
 
     </body>
