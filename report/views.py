@@ -5,8 +5,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime
 from django.http import HttpResponse
-from plotly.offline import plot
-from plotly.graph_objs import Scatter
 import numpy as np
 import requests
 from xlrd import XLRDError
