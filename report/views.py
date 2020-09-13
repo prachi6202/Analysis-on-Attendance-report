@@ -7,7 +7,12 @@ from datetime import datetime
 from django.http import HttpResponse
 import numpy as np
 import requests
+from plotly.offline import plot
+from plotly.graph_objs import Scatter
+# import plotly.graph_objs
 from xlrd import XLRDError
+import plotly.express as px
+from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 
 def home(request):
@@ -72,24 +77,27 @@ def analyse(request):
 
             values=pd.DataFrame(values)
 
-            y=first_output.Students
-            y=np.array(y)
-            y=y.flatten()
-            fig, ax = plt.subplots()
-            ax.bar(date,y);
-            result=fig.autofmt_xdate()
-            # plt.xlabel("Date")
-            plt.ylabel("Total Students Presented")
-            plt.savefig('media/abhi.png', dpi=300)
+            graph=pd.DataFrame({"Date":date,
+                                "Students":total_present_of_students,
+                                "Percentage":total_present_in_percent,
+                                })
 
-            y=first_output.Percentage
-            y=np.array(y)
-            y=y.flatten()
-            fig, ax = plt.subplots()
-            ax.bar(date,y);
-            result=fig.autofmt_xdate()
-            plt.ylabel("Total Students Presented (%age)")
-            plt.savefig('media/naman.png', dpi=300)
+            y = graph.Students
+            x = graph.Date
+            plot_div1 = plot([Scatter(x=x, y=y,
+                        mode='lines', name='test',
+                        opacity=0.8, marker_color='blue')],
+                        output_type='div')
+
+            y = graph.Percentage
+            x = graph.Date
+            plot_div2 = plot([Scatter(x=x, y=y,
+                        mode='lines', name='test',
+                        opacity=0.8, marker_color='blue')],
+                        output_type='div')
+
+            fig1 = px.bar(x=graph.Date, y=graph.Percentage, labels={'x':'Date', 'y':'Student %'})
+            fig2 = px.bar(x=graph.Date, y=graph.Students, labels={'x':'Date', 'y':'Student'})
 
 
             total=[]
@@ -121,7 +129,8 @@ def analyse(request):
             print(less_than_25)
 
             if request.method == "POST":
-                return render(request,'report/analyse.html',{'p':filePathName,'file':file_name,'sheet':sheet,'start':start_date.date(),'end':end_date.date(),'teacher':first_output.to_html(),'student':df.to_html(),'less_than_25':less_than_25.to_html(),'less_25':less_25,'num':num,'values':values.to_html()})
+                return render(request,'report/analyse.html',{'p':filePathName,'file':file_name,'sheet':sheet,'start':start_date.date(),'end':end_date.date(),'teacher':first_output.to_html(),'student':df.to_html(),'less_than_25':less_than_25.to_html(),
+                                'less_25':less_25,'num':num,'values':values.to_html(),'plot_div1':plot_div1,'plot_div2':plot_div2,'fig1':fig1.to_html,'fig2':fig2.to_html})
 
         except ZeroDivisionError:
             return HttpResponse("No data in file.Check your file.")
@@ -131,6 +140,9 @@ def analyse(request):
 
         except ValueError:
             return HttpResponse("You have enter the wrong value")
+
+        except RuntimeError:
+            return render(request,'report/home.html')
 
     else:
         return HttpResponse("Did you mean this ? Choose the correct input")

@@ -10,7 +10,6 @@
     <style>
     @media only screen and (max-width: 600px) {
 
-
         }
 
       .column {
@@ -28,6 +27,8 @@
 
   </head>
     <body>
+      <br><br>
+
       <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{% url 'home' %}">Attendance Report</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,20 +75,24 @@
             <h2 id="visualize">Visualisation</h2>
           <div class="row">
             <div class="col-lg-6 col-sm-12">
-                <img src="/media/naman.png" style="width:100%" alt="Cannot Load Image">
+                {% autoescape off %}
+                {{ fig1 | safe }}
+                {% endautoescape %}
             </div>
             <div class="col-lg-6 col-sm-12">
-                <img src="/media/abhi.png" style="width:100%"  alt="Cannot Load Image">
+                {% autoescape off %}
+                {{ fig2 | safe }}
+                {% endautoescape %}
             </div>
           </div>
         </div>
 
-<br>
+<br><br>
         <div class="container">
           <h2 id="student">Student`s Report</h2>
           <center><table class="table">{{ student | safe}}</table></center><br>
         </div>
-<br>
+<br><br>
 
         <div class="container">
           <h2 id="list">Attendance less than {{num}}% </h2><br>

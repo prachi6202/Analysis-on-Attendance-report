@@ -40,7 +40,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Attendance Report</a>
+  <a class="navbar-brand" href="{% url 'home'%}">Attendance Report</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -55,6 +55,7 @@
     </ul>
   </div>
 </nav>
+<center><h2>{{value}}</h2></center>
     <div class="container ij">
       <div class="row">
         <div class="col-lg-4 col-sm-12 ex">
@@ -75,7 +76,6 @@
                     <label for="end">End</label>
                     <input type="date" id="end" name="trip-end" value="" min="2000-01-01" max="2060-07-30"><br><br>
 
-                    <!-- <h6></h6> -->
                     <label for="number">Filter Students (Attendance less than)</label>
                     <input type="number" name="number" value="50"><br><br>
 
