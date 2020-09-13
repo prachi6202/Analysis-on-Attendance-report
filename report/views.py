@@ -118,7 +118,7 @@ def analyse(request):
             name=np.array(my_workbook.iloc[:,2:3])
             name=name.flatten()
 
-            df=pd.DataFrame({"Rollnumber":roll.astype(int),
+            df=pd.DataFrame({"Rollnumber":roll.astype(str),
                             "Name  ":name,
                             "Total":total,
                             "Percentage":total_percentage_of_present_of_particular_student,})
@@ -133,16 +133,19 @@ def analyse(request):
                                 'less_25':less_25,'num':num,'values':values.to_html(),'plot_div1':plot_div1,'plot_div2':plot_div2,'fig1':fig1.to_html,'fig2':fig2.to_html})
 
         except ZeroDivisionError:
-            return HttpResponse("No data in file.Check your file.")
+            return HttpResponse("No record found. Check your file. Go Back")
 
         except XLRDError:
-            return HttpResponse("Wrong File or Wrong Sheet Name")
+            return HttpResponse("Wrong File or Wrong Sheet Name. Go Back")
 
         except ValueError:
-            return HttpResponse("You have enter the wrong value")
+            return HttpResponse("You have enter the wrong value. Go Back")
 
         except RuntimeError:
             return render(request,'report/home.html')
+
+        except MultiValueDictKeyError:
+            return HttpResponse("Enter File. You have entered wrong input.Go Back")
 
     else:
         return HttpResponse("Did you mean this ? Choose the correct input")
