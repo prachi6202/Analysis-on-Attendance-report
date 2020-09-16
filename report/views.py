@@ -148,4 +148,4 @@ def analyse(request):
             return HttpResponse("Enter File. You have entered wrong input.Go Back")
 
     else:
-        return HttpResponse("Did you mean this ? Choose the correct input")
+        return HttpResponse("Did you mean this ? Choose the correct input.Go Back")

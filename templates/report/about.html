@@ -5,13 +5,195 @@
     <meta charset="utf-8">
     <title>About</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style media="screen">
-    .fp{
-      height:500px;
-      width:100%;
-    }
 
+    h1,p,h2,h3,h4,.hi{
+    font-family: 'Libre Baskerville', serif;
+    }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+        flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  /*   padding: 2em 0em; */
+  }
+
+  .c{
+    align-items: center;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #FFF;
+    padding:  10px 0px;
+    width: 180px;
+  }
+
+
+
+
+  .btn {
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 45px;
+    max-width: 160px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+  }
+  .btn:hover {
+    text-decoration: none;
+  }
+
+  /*btn_background*/
+  .effect01 {
+    color: #FFF;
+    border: 4px solid #000;
+    box-shadow:0px 0px 0px 1px #000 inset;
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  .effect01:hover {
+    border: 4px solid #666;
+    background-color: #FFF;
+    box-shadow:0px 0px 0px 4px #EEE inset;
+  }
+
+  /*btn_text*/
+  .effect01 span {
+    transition: all 0.2s ease-out;
+    z-index: 2;
+  }
+  .effect01:hover span{
+    letter-spacing: 0.13em;
+    color: #333;
+  }
+
+  /*highlight*/
+  .effect01:after {
+    background: #FFF;
+    border: 0px solid #000;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: .8;
+    position: absolute;
+    top: -50px;
+    -webkit-transform: rotate(35deg);
+            transform: rotate(35deg);
+    width: 50px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);/*easeOutCirc*/
+    z-index: 1;
+  }
+  .effect01:hover:after {
+    background: #FFF;
+    border: 20px solid #000;
+    opacity: 0;
+    left: 120%;
+    -webkit-transform: rotate(40deg);
+            transform: rotate(40deg);
+  }
+
+.y {
+  position:absolute;
+   /* top:50%; */
+  left:50%;
+  transform: translate(-50%, -50%);
+  margin:0;
+  padding:0;
+  display:flex;
+}
+
+.y li {
+  list-style: none;
+}
+
+.y li a {
+  position: relative;
+  width:60px;
+  height:60px;
+  display:block;
+  text-align:center;
+  margin:0 10px;
+  border-radius: 50%;
+  padding: 6px;
+  box-sizing: border-box;
+  text-decoration:none;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+  background: linear-gradient(0deg, #ddd, #fff);
+  transition: .5s;
+}
+
+.y li a:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  text-decoration:none;
+}
+
+.y li a .fab {
+  widht: 100%;
+  height:100%;
+  display:block;
+  background: linear-gradient(0deg, #fff, #ddd);
+  border-radius: 50%;
+  line-height: calc(60px - 12px);
+  font-size:24px;
+  color: #262626;
+  transition: .5s;
+}
+
+.y li:nth-child(1) a:hover .fab {
+  color: #3b5998;
+}
+
+.y li:nth-child(2) a:hover .fab {
+  color: #00aced;
+}
+/*
+.y li:nth-child(3) a:hover .fab {
+  color: #dd4b39;
+} */
+
+.y li:nth-child(3) a:hover .fab {
+  color: #007bb6;
+}
+
+.y li:nth-child(4) a:hover .fab {
+  color: #02B902;
+}
+    @media only screen and (max-width: 600px) {
+              .test{
+                width: 300px;
+                padding-top: 50px;
+              }
+              .io{
+                padding-top: 50px;
+              }
+              .pl{
+                padding-bottom: 50px;
+              }
+
+
+        }
+
+
+    .pg{
+      width:100%;
+
+    }
     </style>
 
   </head>
@@ -31,22 +213,105 @@
       </li>
     </ul>
   </div>
-</nav><br>
+</nav>
+<br>
+
+<div class="container">
       <div class="container">
-      <center>  <h2>About Page</h2> </center><br>
+         <center>
+            <h1>About Page</h1><br>
+            <p>The purpose of developing this software is to generate the report automatically.</p>
+            <p>Student's attendance analysis gives the visual insights and downloadable file that can be shared.</p>
+          </center>
+
+          <div class="col-lg-12 col-sm-12" >
+          <center>  <img class="test" src="/media/about.png" alt="Unable to show!"> </center>
+          </div>
+<br><br><br><br>
+<div class="row">
+<div class="col-lg-6 col-sm-12">
+  <h2>Analysis contains the following details:</h2>
+  <ol class="hi">
+
+    <li>Date wise analysis of students in the particular lectures</li>
+    <li>Total number of students that are presented in the particular time span</li>
+    <li>Students report</li>
+    <li>Students can be filtered on the basis of the percentage of their attendance</li>
+    <li>The option of download is also available</li>
+    <li>Visualization for better understanding</li>
+  </ol>
+</div>
+<div class="col-lg-6 col-sm-12">
+  <img class="io" width="100%" src="/media/visualisation.png" alt="">
+</div>
+</div>
+
+      </div>
+
+<br><br><br><br>
 
         <div class="container">
           <!-- <center>  <h2 id="visualize">Visualisation</h2> </center> -->
           <div class="row">
             <div class="col-lg-6 col-sm-12">
-              <img class="fp" src="/media/data1.png" alt="Unable to show!">
+              <img class="pg pl" src="/media/example.png" alt="Unable to show!">
             </div>
             <div class="col-lg-6 col-sm-12">
-              <img class="fp" src="/media/data2.png" alt="Unable to show!">
+              <!-- <img class="fp" src="/media/example2.png" alt="Unable to show!"> -->
+              <h2>File Format</h2><br>
+              <h4>The file format should be in this format :</h4>
+              <ol class="hi">
+                <li>Serial Number</li>
+                <li>RollNumber</li>
+                <li>Name</li>
+                <li>Then student's record with date attribute.</li>
+              </ol>
+
             </div>
           </div>
         </div>
-      </div>
+
+<br><br><br><br>
+
+        <div class="container">
+          <!-- <center>  <h2 id="visualize">Visualisation</h2> </center> -->
+          <div class="row">
+            <div class="col-lg-6 col-sm-12">
+              <!-- <img class="fp" src="/media/example1.png" alt="Unable to show!"> -->
+              <h2>About Sheet tabs</h2>
+              <p>For subject analysis - You have to enter the same name which you have provided in your sheet name in xlsx workbook.</p>
+              <br><h3>For Example:</h3>
+              <p>For DBMS Subject analysis. you have to enter <b>dbms</b> as written in screenshot.</p>
+              <p>For EIT Lab group 1 analysis. you have to enter <b>eit lab 1</b> as written in screenshot. </p>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+              <img class="pg io" src="/media/example2.png" alt="Unable to show!">
+            </div>
+          </div>
+        </div>
+  </div>
+<br><br><br>
+<footer  style=" background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%); background-color: #2d3436; padding-top: 70px ; padding-bottom: 70px;">
+  <center><div class="container"><h3 style="color:white;">Did you enjoy my work ? Feel free to give feedback. 😊</h3></div></center>
+<br><br>
+<div class="buttons">
+  <div class="c">
+
+      <a href="mailto:att.report.analysis@gmail.com" class="btn effect01" target="_blank"><span>Contact</span></a>
+  </div>
+</div>
+
+<br><br>
+<br>
+  <ul class="y">
+  <li><a href="https://facebook.com/prachi.garg.399826"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a href="https://www.linkedin.com/in/prachi-garg-00a04b18b"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a href="https://github.com/prachi6202/"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+</ul>
+
+</footer>
+
   </body>
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
